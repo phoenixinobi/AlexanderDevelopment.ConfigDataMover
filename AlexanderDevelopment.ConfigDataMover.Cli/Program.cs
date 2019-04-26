@@ -1,7 +1,7 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // Program.cs
 //
-// Copyright 2015-2017 Lucas Alexander
+// Copyright 2015-2018 Lucas Alexander
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,9 +50,8 @@ namespace AlexanderDevelopment.ConfigDataMover.Cli
                     Console.WriteLine("Source connection string: {0}", options.Source);
                     Console.WriteLine("Target connection string: {0}", options.Target);
                 }
-
                 //parse the config file
-                ParseConfig(options.ConfigFile);
+                ParseConfig(Path.GetFullPath(options.ConfigFile));
 
                 //set source/target connection from parameters if specified - this will overwrite connections from the config file
                 if (!string.IsNullOrEmpty(options.Source))
@@ -132,6 +131,10 @@ namespace AlexanderDevelopment.ConfigDataMover.Cli
                     step.CreateOnly = false;
                     if (xn.Attributes["createOnly"] != null)
                         step.CreateOnly = Convert.ToBoolean(xn.Attributes["createOnly"].Value);
+
+                    step.ManyMany = false;
+                    if (xn.Attributes["manyMany"] != null)
+                        step.ManyMany = Convert.ToBoolean(xn.Attributes["manyMany"].Value);
 
                     _jobSteps.Add(step);
                 }

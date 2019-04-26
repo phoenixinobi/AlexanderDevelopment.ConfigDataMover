@@ -1,7 +1,7 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // About.xaml.cs
 //
-// Copyright 2015-2017 Lucas Alexander
+// Copyright 2015-2018 Lucas Alexander
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
             StringBuilder licenseSb = new StringBuilder();
             licenseSb.AppendLine("Dynamics CRM Configuration Data Mover\n");
             licenseSb.AppendLine("Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "\n");
-            licenseSb.AppendLine("Copyright " + DateTime.Now.Year.ToString() + " Lucas Alexander\n");
+            licenseSb.AppendLine("Copyright 2015-" + DateTime.Now.Year.ToString() + " Lucas Alexander\n");
             licenseSb.AppendLine(apacheText.Replace("'", "\""));
             string aboutText = licenseSb.ToString();
             aboutTextBlock.Text = aboutText;
